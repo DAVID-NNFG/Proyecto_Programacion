@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 /**
  *
- * @author Usuario iTC
+ * @author DAVID-NNFG
  */
 public class Registro_de_Signos {
     

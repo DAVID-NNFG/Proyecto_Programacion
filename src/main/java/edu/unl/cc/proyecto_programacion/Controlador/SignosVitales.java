@@ -6,9 +6,11 @@ package edu.unl.cc.proyecto_programacion.Controlador;
 
 /**
  *
- * @author Usuario iTC
+ * @author DAVID-NNFG
  */
 public class SignosVitales {
+    
+    // En esta calse se guardaran los signos vitales 
     private double peso;
     private double altura;
     private int frecuenciaCardiaca;
@@ -84,11 +86,32 @@ public class SignosVitales {
     public void setSaturacionOxigeno(int saturacionOxigeno) {
         this.saturacionOxigeno = saturacionOxigeno;
     }
+    
+    public String registrarSignos() {
+        return "Signos vitales registrados correctamente.";
+    }
+    
+    public String consultarSignos() {
+        return toString();
+    }
 
     @Override
     public String toString() {
-        return "SignosVitales{" + "peso=" + peso + ", altura=" + altura + ", frecuenciaCardiaca=" + frecuenciaCardiaca + ", presionArterial=" + presionArterial + ", frecuenciaRespiratoria=" + frecuenciaRespiratoria + ", temperatura=" + temperatura + ", saturacionOxigeno=" + saturacionOxigeno + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("SignosVitales{");
+        sb.append("peso=").append(peso);
+        sb.append(", altura=").append(altura);
+        sb.append(", frecuenciaCardiaca=").append(frecuenciaCardiaca);
+        sb.append(", presionArterial=").append(presionArterial);
+        sb.append(", frecuenciaRespiratoria=").append(frecuenciaRespiratoria);
+        sb.append(", temperatura=").append(temperatura);
+        sb.append(", saturacionOxigeno=").append(saturacionOxigeno);
+        sb.append('}');
+        return sb.toString();
     }
+    
+
+    
 
     
 }

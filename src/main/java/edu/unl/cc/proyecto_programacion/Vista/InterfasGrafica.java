@@ -6,7 +6,7 @@ package edu.unl.cc.proyecto_programacion.Vista;
 
 /**
  *
- * @author Usuario iTC
+ * @author DAVID-NNFG
  */
 public class InterfasGrafica {
     
@@ -19,6 +19,21 @@ public class InterfasGrafica {
     public void setInterfas(String interfas) {
         this.interfas = interfas;
     }
+    
+public class Botones{
+    
+    public String botones;
+
+        public String getBotones() {
+            return botones;
+        }
+
+        public void setBotones(String botones) {
+            this.botones = botones;
+        }
+    
+    
+}
     
     
     

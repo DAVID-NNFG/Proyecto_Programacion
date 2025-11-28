@@ -6,7 +6,7 @@ package edu.unl.cc.proyecto_programacion.Controlador;
 
 /**
  *
- * @author Usuario iTC
+ * @author DAVID-NNFG
  */
 public class Paciente {
     
