@@ -24,6 +24,10 @@ public class Paciente {
     
      public Paciente() {}
 
+    public Paciente(String nombre, int edad, double id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getIdentificacion() {
         return identificacion;
     }

@@ -31,6 +31,10 @@ public class SignosVitales {
     
     public SignosVitales() {}
 
+    public SignosVitales(double altura, double peso, double fc, double pa, double spo2) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public double getPeso() {
         return peso;
     }
