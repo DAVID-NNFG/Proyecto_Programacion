@@ -10,16 +10,16 @@ package edu.unl.cc.proyecto_programacion.Controlador;
  */
 public class Paciente {
     
-    private String identificacion;
-    private String nombre;
-    private int edad;
-    private String sexo;
+    private String identificacion; // Identificacion del pasiente(Puede ser el numero de cedula)
+    private String nombre; // Nombre del pasiente 
+    private int edad;     // Edaad del pasiente 
+    private String genero;  // Genero del pasiente 
 
-    public Paciente(String identificacion, String nombre, int edad, String sexo) {
+    public Paciente(String identificacion, String nombre, int edad, String genero) {
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.edad = edad;
-        this.sexo = sexo;
+        this.genero = genero;
     }
     
      public Paciente() {}
@@ -48,12 +48,12 @@ public class Paciente {
         this.edad = edad;
     }
 
-    public String getSexo() {
-        return sexo;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
     
     public String registrarPaciente() {
@@ -82,7 +82,7 @@ public class Paciente {
         sb.append("identificacion=").append(identificacion);
         sb.append(", nombre=").append(nombre);
         sb.append(", edad=").append(edad);
-        sb.append(", sexo=").append(sexo);
+        sb.append(", sexo=").append(genero);
         sb.append('}');
         return sb.toString();
     } 
