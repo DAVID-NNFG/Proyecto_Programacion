@@ -6,7 +6,7 @@ package edu.unl.cc.proyecto_programacion.Controlador;
 
 /**
  *
- * @author DAVID-NNFG
+ * @author David-NNFG, camilachim, Etxhn
  */
 public class Usuario {
     

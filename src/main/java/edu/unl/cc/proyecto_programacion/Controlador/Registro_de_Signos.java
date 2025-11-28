@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 /**
  *
- * @author DAVID-NNFG
+ * @author David-NNFG, camilachim, Etxhn
  */
 public class Registro_de_Signos {
     
@@ -20,6 +20,10 @@ public class Registro_de_Signos {
         this.paciente = paciente;
         this.signosVitales = signosVitales;
         this.fechaHora = fechaHora;
+    }
+
+    public Registro_de_Signos(Paciente paciente, SignosVitales signos) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public Paciente getPaciente() {
