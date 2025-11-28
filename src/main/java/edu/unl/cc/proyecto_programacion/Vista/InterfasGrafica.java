@@ -19,7 +19,7 @@ public class InterfasGrafica {
 
         System.out.println(" SISTEMA DE SIGNOS VITALES PRUEBA CONSOLA\n");
 
-        // Datos del pasiente }
+        // Datos del pasiente 
       
         System.out.print("Ingrese nombre del paciente: ");
         String nombre = sc.nextLine();

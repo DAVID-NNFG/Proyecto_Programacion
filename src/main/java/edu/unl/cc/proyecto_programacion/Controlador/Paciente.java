@@ -10,85 +10,127 @@ package edu.unl.cc.proyecto_programacion.Controlador;
  */
 public class Paciente {
     
-    private String identificacion; // Identificacion del pasiente(Puede ser el numero de cedula)
-    private String nombre; // Nombre del pasiente 
-    private int edad;     // Edaad del pasiente 
-    private String genero;  // Genero del pasiente 
+    private String nombre;
+    private int edad;
+    private String genero;
+    private String identificacion; // ahora como String para validar mejor
 
-    public Paciente(String identificacion, String nombre, int edad, String genero) {
-        this.identificacion = identificacion;
-        this.nombre = nombre;
-        this.edad = edad;
-        this.genero = genero;
-    }
-    
-     public Paciente() {}
-
-    public Paciente(String nombre, int edad, double id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    // Constructor
+    public Paciente(String nombre, int edad, String genero, String identificacion) {
+        setNombre(nombre);
+        setEdad(edad);
+        setGenero(genero);
+        setIdentificacion(identificacion);
     }
 
-    public String getIdentificacion() {
-        return identificacion;
-    }
+    // Constructor vacío
+    public Paciente() {}
+
+    // ---------------------------------------------------
+    // VALIDACIONES Y SETTERS
+    // ---------------------------------------------------
 
     public void setIdentificacion(String identificacion) {
+        if (identificacion == null || !identificacion.matches("\\d{10}")) {
+            throw new IllegalArgumentException("Identificación ciudadana no valida");
+        }
         this.identificacion = identificacion;
-    }
-
-    public String getNombre() {
-        return nombre;
     }
 
     public void setNombre(String nombre) {
+        if (nombre == null) {
+            throw new IllegalArgumentException("Ingresar su primer nombre y apellido");
+        }
+
+        // Debe tener 2 palabras
+        String[] partes = nombre.trim().split("\\s+");
+
+        if (partes.length != 2) {
+            throw new IllegalArgumentException("Ingresar su primer nombre y apellido");
+        }
+
+        // Solo letras
+        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ]+\\s[a-zA-ZáéíóúÁÉÍÓÚñÑ]+")) {
+            throw new IllegalArgumentException("Ingresar su primer nombre y apellido");
+        }
+
         this.nombre = nombre;
+    }
+
+    public void setEdad(int edad) {
+        if (edad < 1 || edad > 99) {
+            throw new IllegalArgumentException("Edad no válida (1-99)");
+        }
+        this.edad = edad;
+    }
+
+    public void setGenero(String genero) {
+        if (genero == null) {
+            throw new IllegalArgumentException("Género no válido (Hombre/Mujer)");
+        }
+
+        genero = genero.trim().toLowerCase();
+
+        if (!genero.equals("hombre") && !genero.equals("mujer")) {
+            throw new IllegalArgumentException("Género no válido (Hombre/Mujer)");
+        }
+
+        this.genero = genero.substring(0, 1).toUpperCase() + genero.substring(1);
+    }
+
+    // ---------------------------------------------------
+    // GETTERS
+    // ---------------------------------------------------
+
+    public String getNombre() {
+        return nombre;
     }
 
     public int getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
     public String getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public String getIdentificacion() {
+        return identificacion;
     }
-    
+
+    // ---------------------------------------------------
+    // MÉTODOS DEL UML
+    // ---------------------------------------------------
+
     public String registrarPaciente() {
-        return "Paciente registrado: " + nombre + 
+        return "Paciente registrado: " + nombre +
                " | Edad: " + edad +
+               " | Género: " + genero +
                " | ID: " + identificacion;
     }
-    
-    public void actualizarDatos(String nuevoNombre, int nuevaEdad) {
-        this.nombre = nuevoNombre;
-        this.edad = nuevaEdad;
+
+    public void actualizarDatos(String nuevoNombre, int nuevaEdad, String nuevoGenero) {
+        setNombre(nuevoNombre);
+        setEdad(nuevaEdad);
+        setGenero(nuevoGenero);
     }
-    
-     public String consultarPaciente() {
-        return "Paciente{" +
-               "Nombre='" + nombre + '\'' +
-               ", Edad=" + edad +
-               ", Identificación=" + identificacion +
-               '}';
+
+    public String consultarPaciente() {
+        return toString();
     }
+
+    // ---------------------------------------------------
+    // toString()
+    // ---------------------------------------------------
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Paciente{");
-        sb.append("identificacion=").append(identificacion);
-        sb.append(", nombre=").append(nombre);
-        sb.append(", edad=").append(edad);
-        sb.append(", sexo=").append(genero);
-        sb.append('}');
-        return sb.toString();
+        return "Paciente{" +
+                "nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", genero='" + genero + '\'' +
+                ", identificacion='" + identificacion + '\'' +
+                '}';
     } 
     
 }
