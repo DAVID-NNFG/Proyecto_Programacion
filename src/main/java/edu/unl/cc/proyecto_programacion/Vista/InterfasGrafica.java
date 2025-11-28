@@ -17,11 +17,10 @@ public class InterfasGrafica {
         Scanner sc = new Scanner(System.in);
         Controlador_de_SignosVitales controlador = new Controlador_de_SignosVitales();
 
-        System.out.println("===== SISTEMA DE SIGNOS VITALES (PRUEBA CONSOLA) =====\n");
+        System.out.println(" SISTEMA DE SIGNOS VITALES PRUEBA CONSOLA\n");
 
-        // ---------------------------------------------
-        // DATOS DEL PACIENTE
-        // ---------------------------------------------
+        // Datos del pasiente }
+      
         System.out.print("Ingrese nombre del paciente: ");
         String nombre = sc.nextLine();
 
@@ -36,9 +35,8 @@ public class InterfasGrafica {
         System.out.println("\n--- Datos del Paciente registrados ---");
         System.out.println(paciente.consultarPaciente());
 
-        // ---------------------------------------------
-        // DATOS DE SIGNOS VITALES
-        // ---------------------------------------------
+        // datos de los signos vitales 
+        
         System.out.println("\nIngrese signos vitales:");
 
         System.out.print("Altura: ");
@@ -60,7 +58,7 @@ public class InterfasGrafica {
 
         Registro_de_Signos registro = controlador.guardarSignos(paciente, sv);
 
-        System.out.println("\n===== REGISTRO CREADO =====");
+        System.out.println("\n==== REGISTRO CREADO =====");
         System.out.println(registro.toString());
 
         System.out.println("\n===== HISTORIAL =====");
