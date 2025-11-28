@@ -6,29 +6,27 @@ package edu.unl.cc.proyecto_programacion.Controlador;
 
 /**
  *
- * @author David-NNFG, camilachim, Etxhn
+ * @author DAVID-NNFG, camilachim, Etxhn
  */
 public class Paciente {
     
     private String nombre;
     private int edad;
     private String genero;
-    private String identificacion; // ahora como String para validar mejor
+    private String identificacion; 
 
-    // Constructor
     public Paciente(String nombre, int edad, String genero, String identificacion) {
-        setNombre(nombre);
-        setEdad(edad);
-        setGenero(genero);
-        setIdentificacion(identificacion);
+        this.nombre = nombre;
+        this.edad = edad;
+        this.genero = genero;
+        this.identificacion = identificacion;
     }
 
-    // Constructor vacío
     public Paciente() {}
 
-    // ---------------------------------------------------
-    // VALIDACIONES Y SETTERS
-    // ---------------------------------------------------
+    public Paciente(String nombre, int edad, double id) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
 
     public void setIdentificacion(String identificacion) {
         if (identificacion == null || !identificacion.matches("\\d{10}")) {
@@ -42,14 +40,12 @@ public class Paciente {
             throw new IllegalArgumentException("Ingresar su primer nombre y apellido");
         }
 
-        // Debe tener 2 palabras
         String[] partes = nombre.trim().split("\\s+");
 
         if (partes.length != 2) {
             throw new IllegalArgumentException("Ingresar su primer nombre y apellido");
         }
 
-        // Solo letras
         if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ]+\\s[a-zA-ZáéíóúÁÉÍÓÚñÑ]+")) {
             throw new IllegalArgumentException("Ingresar su primer nombre y apellido");
         }
@@ -78,10 +74,6 @@ public class Paciente {
         this.genero = genero.substring(0, 1).toUpperCase() + genero.substring(1);
     }
 
-    // ---------------------------------------------------
-    // GETTERS
-    // ---------------------------------------------------
-
     public String getNombre() {
         return nombre;
     }
@@ -98,9 +90,6 @@ public class Paciente {
         return identificacion;
     }
 
-    // ---------------------------------------------------
-    // MÉTODOS DEL UML
-    // ---------------------------------------------------
 
     public String registrarPaciente() {
         return "Paciente registrado: " + nombre +
@@ -118,10 +107,6 @@ public class Paciente {
     public String consultarPaciente() {
         return toString();
     }
-
-    // ---------------------------------------------------
-    // toString()
-    // ---------------------------------------------------
 
     @Override
     public String toString() {

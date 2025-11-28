@@ -12,52 +12,50 @@ import java.time.LocalDateTime;
  */
 public class Registro_de_Signos {
     
-    private Paciente paciente; //Se registra el pasiente desde la clase "Pasiente" 
-    private SignosVitales signosVitales; // Se registra los signos vitales 
-    private LocalDateTime fechaHora; // Se registra la fecha y hora 
+    private Paciente paciente;
+    private SignosVitales signosVitales;
+    private LocalDateTime fechaHora;
 
-    public Registro_de_Signos(Paciente paciente, SignosVitales signosVitales, LocalDateTime fechaHora) {
+    public Registro_de_Signos(Paciente paciente, SignosVitales signosVitales) {
+
+        if (paciente == null) {
+            throw new IllegalArgumentException("Paciente no puede ser nulo");
+        }
+
+        if (signosVitales == null) {
+            throw new IllegalArgumentException("Signos vitales no pueden ser nulos");
+        }
+
         this.paciente = paciente;
         this.signosVitales = signosVitales;
-        this.fechaHora = fechaHora;
+        this.fechaHora = LocalDateTime.now();
     }
 
-    public Registro_de_Signos(Paciente paciente, SignosVitales signos) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Registro_de_Signos() {
+        this.fechaHora = LocalDateTime.now();
     }
 
-    public Paciente getPaciente() {
-        return paciente;
-    }
+    public Paciente getPaciente() { return paciente; }
+    public SignosVitales getSignosVitales() { return signosVitales; }
+    public LocalDateTime getFechaHora() { return fechaHora; }
 
     public void setPaciente(Paciente paciente) {
+        if (paciente == null) throw new IllegalArgumentException("Paciente no puede ser nulo");
         this.paciente = paciente;
-    }
-
-    public SignosVitales getSignosVitales() {
-        return signosVitales;
     }
 
     public void setSignosVitales(SignosVitales signosVitales) {
+        if (signosVitales == null) throw new IllegalArgumentException("Signos vitales no pueden ser nulos");
         this.signosVitales = signosVitales;
-    }
-
-    public LocalDateTime getFechaHora() {
-        return fechaHora;
-    }
-
-    public void setFechaHora(LocalDateTime fechaHora) {
-        this.fechaHora = fechaHora;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Registro_de_Signos{");
-        sb.append("paciente=").append(paciente);
-        sb.append(", signosVitales=").append(signosVitales);
-        sb.append(", fechaHora=").append(fechaHora);
-        sb.append('}');
-        return sb.toString();
+        return "Registro_de_Signos{" +
+                "paciente=" + paciente.toString() +
+                ", signosVitales=" + signosVitales.toString() +
+                ", fechaHora=" + fechaHora +
+                '}';
     }
 }
+

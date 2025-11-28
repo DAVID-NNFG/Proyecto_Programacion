@@ -15,11 +15,20 @@ import edu.unl.cc.proyecto_programacion.Controlador.SignosVitales;
 public class Controlador_de_SignosVitales {
     
     public Registro_de_Signos guardarSignos(Paciente paciente, SignosVitales signos) {
+
+        if (paciente == null || signos == null) {
+            throw new IllegalArgumentException("Datos incompletos. No se puede guardar el registro.");
+        }
+
         return new Registro_de_Signos(paciente, signos);
     }
 
     public String crearHistorialdeSignos(Registro_de_Signos registro) {
-        return "Historial generado:\n" + registro.toString();
+        if (registro == null) {
+            throw new IllegalArgumentException("No existe registro para generar historial.");
+        }
+
+        return "Historial:\n" + registro.toString();
     }
 
     @Override

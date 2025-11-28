@@ -17,49 +17,71 @@ public class InterfasGrafica {
         Scanner sc = new Scanner(System.in);
         Controlador_de_SignosVitales controlador = new Controlador_de_SignosVitales();
 
-        System.out.println(" SISTEMA DE SIGNOS VITALES PRUEBA CONSOLA\n");
+        Paciente paciente = null;
+        SignosVitales signos = null;
+        Registro_de_Signos registro = null;
 
-        // Datos del pasiente 
-      
-        System.out.print("Ingrese nombre del paciente: ");
-        String nombre = sc.nextLine();
+        System.out.println("===== SISTEMA DE PRUEBA DE SIGNOS VITALES =====\n");
 
-        System.out.print("Ingrese edad del paciente: ");
-        int edad = sc.nextInt();
+        while (paciente == null) {
+            try {
+                System.out.print("Ingrese nombre: ");
+                String nombre = sc.nextLine();
 
-        System.out.print("Ingrese identificación: ");
-        double id = sc.nextDouble();
+                System.out.print("Ingrese edad: ");
+                int edad = Integer.parseInt(sc.nextLine());
 
-        Paciente paciente = new Paciente(nombre, edad, id);
+                System.out.print("Ingrese género: ");
+                String genero = sc.nextLine();
 
-        System.out.println("\n--- Datos del Paciente registrados ---");
-        System.out.println(paciente.consultarPaciente());
+                System.out.print("Ingrese identificación: ");
+                String identificacion = sc.nextLine();
 
-        // datos de los signos vitales 
-        
-        System.out.println("\nIngrese signos vitales:");
+                paciente = new Paciente(nombre, edad, genero, identificacion);
 
-        System.out.print("Altura: ");
-        double altura = sc.nextDouble();
+            } catch (Exception e) {
+                System.out.println("\n⚠ Error: " + e.getMessage());
+                System.out.println("Vuelva a ingresar los datos del paciente.\n");
+            }
+        }
 
-        System.out.print("Peso: ");
-        double peso = sc.nextDouble();
+        System.out.println("\n✔ Paciente registrado correctamente.");
+        System.out.println(paciente);
 
-        System.out.print("Frecuencia cardiaca: ");
-        double fc = sc.nextDouble();
+        while (signos == null) {
+            try {
+                System.out.println("\n--- Ingrese los signos vitales ---");
 
-        System.out.print("Presión arterial (solo número): ");
-        double pa = sc.nextDouble();
+                System.out.print("Altura (0.30 - 2.50): ");
+                double altura = Double.parseDouble(sc.nextLine());
 
-        System.out.print("Saturación de oxígeno (%): ");
-        double spo2 = sc.nextDouble();
+                System.out.print("Peso (1 - 500 kg): ");
+                double peso = Double.parseDouble(sc.nextLine());
 
-        SignosVitales sv = new SignosVitales(altura, peso, fc, pa, spo2);
+                System.out.print("Frecuencia cardiaca (20-220): ");
+                double fc = Double.parseDouble(sc.nextLine());
 
-        Registro_de_Signos registro = controlador.guardarSignos(paciente, sv);
+                System.out.print("Presión arterial (solo número): ");
+                double pa = Double.parseDouble(sc.nextLine());
 
-        System.out.println("\n==== REGISTRO CREADO =====");
-        System.out.println(registro.toString());
+                System.out.print("Saturación de oxígeno (0-100): ");
+                double spo2 = Double.parseDouble(sc.nextLine());
+
+                signos = new SignosVitales(altura, peso, fc, pa, spo2);
+
+            } catch (Exception e) {
+                System.out.println("\n⚠ Error: " + e.getMessage());
+                System.out.println("Vuelva a ingresar los signos vitales.\n");
+            }
+        }
+
+        System.out.println("\n✔ Signos vitales registrados correctamente.");
+        System.out.println(signos);
+
+        registro = controlador.guardarSignos(paciente, signos);
+
+        System.out.println("\n===== REGISTRO COMPLETO =====");
+        System.out.println(registro);
 
         System.out.println("\n===== HISTORIAL =====");
         System.out.println(controlador.crearHistorialdeSignos(registro));
