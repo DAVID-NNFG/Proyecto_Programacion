@@ -12,9 +12,9 @@ import java.time.LocalDateTime;
  */
 public class Registro_de_Signos {
     
-    private Paciente paciente;
-    private SignosVitales signosVitales;
-    private LocalDateTime fechaHora;
+    private Paciente paciente; //Se registra el pasiente desde la clase "Pasiente" 
+    private SignosVitales signosVitales; // Se registra los signos vitales 
+    private LocalDateTime fechaHora; // Se registra la fecha y hora 
 
     public Registro_de_Signos(Paciente paciente, SignosVitales signosVitales, LocalDateTime fechaHora) {
         this.paciente = paciente;
