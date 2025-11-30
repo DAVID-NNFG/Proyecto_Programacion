@@ -9,24 +9,21 @@ package edu.unl.cc.proyecto_programacion.Controlador;
  * @author DAVID-NNFG, camilachim, Etxhn
  */
 public class Paciente {
-    
     private String nombre;
     private int edad;
     private String genero;
     private String identificacion; 
 
+
     public Paciente(String nombre, int edad, String genero, String identificacion) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.genero = genero;
-        this.identificacion = identificacion;
+        setNombre(nombre);
+        setEdad(edad);
+        setGenero(genero);
+        setIdentificacion(identificacion);
     }
+
 
     public Paciente() {}
-
-    public Paciente(String nombre, int edad, double id) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
 
     public void setIdentificacion(String identificacion) {
         if (identificacion == null || !identificacion.matches("\\d{10}")) {
@@ -40,17 +37,18 @@ public class Paciente {
             throw new IllegalArgumentException("Ingresar su primer nombre y apellido");
         }
 
-        String[] partes = nombre.trim().split("\\s+");
+        String texto = nombre.trim();
+        String[] partes = texto.split("\\s+"); 
 
         if (partes.length != 2) {
             throw new IllegalArgumentException("Ingresar su primer nombre y apellido");
         }
 
-        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ]+\\s[a-zA-ZáéíóúÁÉÍÓÚñÑ]+")) {
+        if (!texto.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ]+\\s[a-zA-ZáéíóúÁÉÍÓÚñÑ]+")) {
             throw new IllegalArgumentException("Ingresar su primer nombre y apellido");
         }
 
-        this.nombre = nombre;
+        this.nombre = texto;
     }
 
     public void setEdad(int edad) {
@@ -64,32 +62,17 @@ public class Paciente {
         if (genero == null) {
             throw new IllegalArgumentException("Género no válido (Hombre/Mujer)");
         }
-
-        genero = genero.trim().toLowerCase();
-
-        if (!genero.equals("hombre") && !genero.equals("mujer")) {
+        String g = genero.trim().toLowerCase();
+        if (!g.equals("hombre") && !g.equals("mujer")) {
             throw new IllegalArgumentException("Género no válido (Hombre/Mujer)");
         }
-
-        this.genero = genero.substring(0, 1).toUpperCase() + genero.substring(1);
+        this.genero = g.substring(0,1).toUpperCase() + g.substring(1);
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public String getIdentificacion() {
-        return identificacion;
-    }
-
+    public String getNombre() { return nombre; }
+    public int getEdad() { return edad; }
+    public String getGenero() { return genero; }
+    public String getIdentificacion() { return identificacion; }
 
     public String registrarPaciente() {
         return "Paciente registrado: " + nombre +
@@ -116,6 +99,6 @@ public class Paciente {
                 ", genero='" + genero + '\'' +
                 ", identificacion='" + identificacion + '\'' +
                 '}';
-    } 
+    }
     
 }

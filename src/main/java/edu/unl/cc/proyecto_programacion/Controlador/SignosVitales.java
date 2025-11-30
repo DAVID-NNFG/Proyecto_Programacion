@@ -10,108 +10,104 @@ package edu.unl.cc.proyecto_programacion.Controlador;
  */
 public class SignosVitales {
     
-    // En esta calse se guardaran los signos vitales 
-    private double peso;
+   private double peso;
     private double altura;
     private int frecuenciaCardiaca;
-    private String presionArterial;
+    private double presionArterial; 
     private int frecuenciaRespiratoria;
     private double temperatura;
     private int saturacionOxigeno;
 
-    public SignosVitales(double peso, double altura, int frecuenciaCardiaca, String presionArterial, int frecuenciaRespiratoria, double temperatura, int saturacionOxigeno) {
-        this.peso = peso;
-        this.altura = altura;
-        this.frecuenciaCardiaca = frecuenciaCardiaca;
-        this.presionArterial = presionArterial;
-        this.frecuenciaRespiratoria = frecuenciaRespiratoria;
-        this.temperatura = temperatura;
-        this.saturacionOxigeno = saturacionOxigeno;
+    public SignosVitales(double altura, double peso, double frecuenciaCardiaca,
+                         double presionArterial, double saturacionOxigeno) {
+        setAltura(altura);
+        setPeso(peso);
+        setFrecuenciaCardiaca((int) frecuenciaCardiaca);
+        setPresionArterial(presionArterial);
+        setSaturacionOxigeno((int) saturacionOxigeno);
+
+        this.frecuenciaRespiratoria = 0;
+        this.temperatura = 0;
     }
-    
+
+    public SignosVitales(double peso, double altura, int frecuenciaCardiaca, 
+                         double presionArterial, int frecuenciaRespiratoria,
+                         double temperatura, int saturacionOxigeno) {
+
+        setPeso(peso);
+        setAltura(altura);
+        setFrecuenciaCardiaca(frecuenciaCardiaca);
+        setPresionArterial(presionArterial);
+        setFrecuenciaRespiratoria(frecuenciaRespiratoria);
+        setTemperatura(temperatura);
+        setSaturacionOxigeno(saturacionOxigeno);
+    }
+
     public SignosVitales() {}
 
-    public SignosVitales(double altura, double peso, double fc, double pa, double spo2) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public double getPeso() {
-        return peso;
-    }
 
     public void setPeso(double peso) {
+        if (peso < 1 || peso > 500) {
+            throw new IllegalArgumentException("Peso no válido (1 - 500 kg)");
+        }
         this.peso = peso;
-    }
-
-    public double getAltura() {
-        return altura;
     }
 
     public void setAltura(double altura) {
+        if (altura < 0.30 || altura > 2.50) {
+            throw new IllegalArgumentException("Altura no válida (0.30 - 2.50 m)");
+        }
         this.altura = altura;
     }
 
-    public int getFrecuenciaCardiaca() {
-        return frecuenciaCardiaca;
-    }
-
     public void setFrecuenciaCardiaca(int frecuenciaCardiaca) {
+        if (frecuenciaCardiaca < 20 || frecuenciaCardiaca > 220) {
+            throw new IllegalArgumentException("Frecuencia cardíaca no válida (20-220)");
+        }
         this.frecuenciaCardiaca = frecuenciaCardiaca;
     }
 
-    public String getPresionArterial() {
-        return presionArterial;
-    }
-
-    public void setPresionArterial(String presionArterial) {
+    public void setPresionArterial(double presionArterial) {
+        if (presionArterial < 40 || presionArterial > 200) {
+            throw new IllegalArgumentException("Presión arterial no válida (40-200)");
+        }
         this.presionArterial = presionArterial;
-    }
-
-    public int getFrecuenciaRespiratoria() {
-        return frecuenciaRespiratoria;
     }
 
     public void setFrecuenciaRespiratoria(int frecuenciaRespiratoria) {
         this.frecuenciaRespiratoria = frecuenciaRespiratoria;
     }
 
-    public double getTemperatura() {
-        return temperatura;
-    }
-
     public void setTemperatura(double temperatura) {
         this.temperatura = temperatura;
     }
 
-    public int getSaturacionOxigeno() {
-        return saturacionOxigeno;
-    }
-
     public void setSaturacionOxigeno(int saturacionOxigeno) {
+        if (saturacionOxigeno < 0 || saturacionOxigeno > 100) {
+            throw new IllegalArgumentException("Saturación de oxígeno no válida (0-100)");
+        }
         this.saturacionOxigeno = saturacionOxigeno;
     }
-    
+
     public String registrarSignos() {
         return "Signos vitales registrados correctamente.";
     }
-    
+
     public String consultarSignos() {
         return toString();
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("SignosVitales{");
-        sb.append("peso=").append(peso);
-        sb.append(", altura=").append(altura);
-        sb.append(", frecuenciaCardiaca=").append(frecuenciaCardiaca);
-        sb.append(", presionArterial=").append(presionArterial);
-        sb.append(", frecuenciaRespiratoria=").append(frecuenciaRespiratoria);
-        sb.append(", temperatura=").append(temperatura);
-        sb.append(", saturacionOxigeno=").append(saturacionOxigeno);
-        sb.append('}');
-        return sb.toString();
+        return "SignosVitales{" +
+                "peso=" + peso +
+                ", altura=" + altura +
+                ", frecuenciaCardiaca=" + frecuenciaCardiaca +
+                ", presionArterial=" + presionArterial +
+                ", frecuenciaRespiratoria=" + frecuenciaRespiratoria +
+                ", temperatura=" + temperatura +
+                ", saturacionOxigeno=" + saturacionOxigeno +
+                '}';
     }
     
 

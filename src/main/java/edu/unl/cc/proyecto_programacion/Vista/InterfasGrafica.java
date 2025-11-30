@@ -23,7 +23,6 @@ public class InterfasGrafica {
 
         System.out.println("SISTEMA DE SIGNOS VITALES\n");
 
-
         while (paciente == null) {
             try {
                 System.out.print("Ingrese nombre: ");
@@ -38,20 +37,18 @@ public class InterfasGrafica {
                 System.out.print("Ingrese identificación: ");
                 String identificacion = sc.nextLine();
 
-                // Aquí se usan los setters que validan todo
                 paciente = new Paciente(nombre, edad, genero, identificacion);
 
-            } catch (Exception e) {
-                System.out.println("\n⚠ ERROR: " + e.getMessage());
+            } catch (Exception mensaje) {
+                System.out.println("\n⚠ ERROR: " + mensaje.getMessage());
                 System.out.println("Vuelva a ingresar los datos del paciente.\n");
             }
         }
 
-        System.out.println("\n✔ PACIENTE REGISTRADO");
+        System.out.println("\n PACIENTE REGISTRADO");
         System.out.println(paciente.registrarPaciente());
-        System.out.println(paciente.consultarPaciente());
 
-  // los parametros ya estan definidos y los valores ingresados tiene que estar en esos parametros 
+
         while (signos == null) {
             try {
                 System.out.println("\n--- Ingrese los signos vitales ---");
