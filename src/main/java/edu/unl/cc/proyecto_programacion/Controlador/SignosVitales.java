@@ -14,8 +14,6 @@ public class SignosVitales {
     private double altura;
     private int frecuenciaCardiaca;
     private double presionArterial; 
-    private int frecuenciaRespiratoria;
-    private double temperatura;
     private int saturacionOxigeno;
 
     public SignosVitales(double altura, double peso, double frecuenciaCardiaca,
@@ -26,8 +24,6 @@ public class SignosVitales {
         setPresionArterial(presionArterial);
         setSaturacionOxigeno((int) saturacionOxigeno);
 
-        this.frecuenciaRespiratoria = 0;
-        this.temperatura = 0;
     }
 
     public SignosVitales(double peso, double altura, int frecuenciaCardiaca, 
@@ -38,8 +34,6 @@ public class SignosVitales {
         setAltura(altura);
         setFrecuenciaCardiaca(frecuenciaCardiaca);
         setPresionArterial(presionArterial);
-        setFrecuenciaRespiratoria(frecuenciaRespiratoria);
-        setTemperatura(temperatura);
         setSaturacionOxigeno(saturacionOxigeno);
     }
 
@@ -74,14 +68,6 @@ public class SignosVitales {
         this.presionArterial = presionArterial;
     }
 
-    public void setFrecuenciaRespiratoria(int frecuenciaRespiratoria) {
-        this.frecuenciaRespiratoria = frecuenciaRespiratoria;
-    }
-
-    public void setTemperatura(double temperatura) {
-        this.temperatura = temperatura;
-    }
-
     public void setSaturacionOxigeno(int saturacionOxigeno) {
         if (saturacionOxigeno < 0 || saturacionOxigeno > 100) {
             throw new IllegalArgumentException("Saturación de oxígeno no válida (0-100)");
@@ -104,8 +90,6 @@ public class SignosVitales {
                 ", altura=" + altura +
                 ", frecuenciaCardiaca=" + frecuenciaCardiaca +
                 ", presionArterial=" + presionArterial +
-                ", frecuenciaRespiratoria=" + frecuenciaRespiratoria +
-                ", temperatura=" + temperatura +
                 ", saturacionOxigeno=" + saturacionOxigeno +
                 '}';
     }

@@ -57,17 +57,19 @@ public class Paciente {
         }
         this.edad = edad;
     }
-
+    
     public void setGenero(String genero) {
         if (genero == null) {
             throw new IllegalArgumentException("Género no válido (Hombre/Mujer)");
         }
         String g = genero.trim().toLowerCase();
-        if (!g.equals("Masculino") && !g.equals("Femenino")) {
-            throw new IllegalArgumentException("Género no válido (Masculino/Femenino)");
+        if (!g.equals("hombre") && !g.equals("mujer")) {
+            throw new IllegalArgumentException("Género no válido (Hombre/Mujer)");
         }
+        // Normalizar primera letra mayúscula
         this.genero = g.substring(0,1).toUpperCase() + g.substring(1);
     }
+
 
     public String getNombre() { return nombre; }
     public int getEdad() { return edad; }
