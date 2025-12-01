@@ -63,8 +63,8 @@ public class Paciente {
             throw new IllegalArgumentException("Género no válido (Hombre/Mujer)");
         }
         String g = genero.trim().toLowerCase();
-        if (!g.equals("hombre") && !g.equals("mujer")) {
-            throw new IllegalArgumentException("Género no válido (Hombre/Mujer)");
+        if (!g.equals("Masculino") && !g.equals("Femenino")) {
+            throw new IllegalArgumentException("Género no válido (Masculino/Femenino)");
         }
         this.genero = g.substring(0,1).toUpperCase() + g.substring(1);
     }

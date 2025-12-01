@@ -40,7 +40,7 @@ public class InterfasGrafica {
                 paciente = new Paciente(nombre, edad, genero, identificacion);
 
             } catch (Exception mensaje) {
-                System.out.println("\n⚠ ERROR: " + mensaje.getMessage());
+                System.out.println("\n ERROR: " + mensaje.getMessage());
                 System.out.println("Vuelva a ingresar los datos del paciente.\n");
             }
         }
@@ -51,7 +51,7 @@ public class InterfasGrafica {
 
         while (signos == null) {
             try {
-                System.out.println("\n--- Ingrese los signos vitales ---");
+                System.out.println("\n INGRESE LOS SIGNOS VITALES");
 
                 System.out.print("Altura (0.30 - 2.50): ");
                 double altura = Double.parseDouble(sc.nextLine());
@@ -71,21 +71,21 @@ public class InterfasGrafica {
                 signos = new SignosVitales(altura, peso, fc, pa, spo2);
 
             } catch (Exception e) {
-                System.out.println("\n⚠ ERROR: " + e.getMessage());
+                System.out.println("\n ERROR: " + e.getMessage());
                 System.out.println("Vuelva a ingresar los signos vitales.\n");
             }
         }
 
-        System.out.println("\n✔ SIGNOS VITALES REGISTRADOS");
+        System.out.println("\n SIGNOS VITALES REGISTRADOS");
         System.out.println(signos.registrarSignos());
         System.out.println(signos.consultarSignos());
 
 
         registro = controlador.guardarSignos(paciente, signos);
 
-        System.out.println("\n===== REGISTRO COMPLETO =====");
+        System.out.println("\nREGISTRO DEL PACIENTE COMPLETO");
         System.out.println(controlador.crearHistorialdeSignos(registro));
 
-        System.out.println("\nFIN DEL PROGRAMA");
+        System.out.println("\nDEMOSTRACION DE LAS DOS PRIMERAS FUNCIONALIDADES");
     }
 }
